@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "helloServlet", value = "/hh")
+@WebServlet(name = "helloServlet", value = "/")
 public class HelloServlet extends HttpServlet {
     private String message;
 
@@ -17,7 +17,7 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+        this.getServletContext().getRequestDispatcher("/ListClients.xhtml").forward(request,response);
     }
 
     public void destroy() {
