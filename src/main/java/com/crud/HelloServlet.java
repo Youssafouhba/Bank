@@ -1,25 +1,19 @@
 package com.crud;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import java.io.IOException;
-
-@WebServlet(name = "helloServlet", value = "/")
-public class HelloServlet extends HttpServlet {
-    private String message;
-
-    public void init() {
-        message = "Hello World!";
+@SpringBootApplication
+@Controller
+public class HelloServlet{
+    @GetMapping("/")
+    public String index() {
+        return "index";
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        this.getServletContext().getRequestDispatcher("/ListClients.xhtml").forward(request,response);
-    }
-
-    public void destroy() {
+    public static void main(String[] args) {
+        SpringApplication.run(HelloServlet.class, args);
     }
 }
